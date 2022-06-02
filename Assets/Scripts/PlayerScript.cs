@@ -8,7 +8,7 @@ public class PlayerScript : MonoBehaviour
     public int line = 1;
     Rigidbody2D RB;
     public Text text;
-    public int score = 0;
+    public static int score;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -17,6 +17,12 @@ public class PlayerScript : MonoBehaviour
             Destroy(other.gameObject);
             score++;
             text.text = "Score: " + score;
+            ItemGenerator.speed += 2;
+            if (ItemGenerator.spawnTime < 0.3f)
+            {
+                ItemGenerator.spawnTime -= 0.1f;
+
+            }
       }
       if (other.gameObject.CompareTag("apple"))
       {
