@@ -25,13 +25,13 @@ public class ObstacleScript : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Player"))
         {
+            SoundManager.PlaySound("obstacle");
            StartCoroutine(Animate());
         }
         
     }
     IEnumerator Animate()
     {
-        Debug.Log("girdi");
         animator.SetTrigger("isHit");
         yield return new WaitForSeconds(0.4f);
         Destroy(this.gameObject);
