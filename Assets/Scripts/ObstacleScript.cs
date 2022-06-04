@@ -26,14 +26,15 @@ public class ObstacleScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             SoundManager.PlaySound("obstacle");
-           StartCoroutine(Animate());
+            StartCoroutine(Animate());
         }
         
     }
     IEnumerator Animate()
-    {
-        animator.SetTrigger("isHit");
+    {    
+        animator.SetTrigger("isHit");     
         yield return new WaitForSeconds(0.4f);
         Destroy(this.gameObject);
+        
     }
 }

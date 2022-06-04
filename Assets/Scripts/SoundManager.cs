@@ -23,8 +23,8 @@ public class SoundManager : MonoBehaviour
     }
     public static void PlaySound(string clip)
     {
-        audioSrc.volume = 1;
-        audioSrc.Play();
+        //audioSrc.volume = 1;
+       // audioSrc.Play();
         switch (clip)
         {
             case "apple":
