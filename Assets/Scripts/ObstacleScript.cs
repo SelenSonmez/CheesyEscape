@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,10 @@ using UnityEngine;
 public class ObstacleScript : MonoBehaviour
 {
     private Animator animator;
-    
+    bool isAnimated = false;
+    public GameObject cat;
+    public Transform startPositon;
+
     public void Awake()
     {
         animator = GetComponent<Animator>();
@@ -25,15 +29,21 @@ public class ObstacleScript : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Player"))
         {
-           StartCoroutine(Animate());
+            if (isAnimated)
+                return;
+            isAnimated = true;
+            SoundManager.PlaySound("obstacle");
+            StartCoroutine(Animate());
+            //GameObject catIns = Instantiate(cat, transform.position + new Vector3(0, GameObject.FindGameObjectWithTag("Player").transform.position.x, 0), transform.rotation);
         }
         
     }
+
     IEnumerator Animate()
-    {
-        Debug.Log("girdi");
-        animator.SetTrigger("isHit");
+    {    
+        animator.SetTrigger("isHit");     
         yield return new WaitForSeconds(0.4f);
         Destroy(this.gameObject);
+        
     }
 }

@@ -14,6 +14,7 @@ public class PlayerScript : MonoBehaviour
     {
       if (other.gameObject.CompareTag("cheese"))
       {
+            SoundManager.PlaySound("cheese");
             Destroy(other.gameObject);
             score++;
             text.text = "Score: " + score;
@@ -26,6 +27,7 @@ public class PlayerScript : MonoBehaviour
       }
       if (other.gameObject.CompareTag("apple"))
       {
+            SoundManager.PlaySound("apple");
             Destroy(other.gameObject);
             score--;
             text.text = "Score: " + score;
